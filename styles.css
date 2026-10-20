@@ -87,12 +87,9 @@ a:focus-visible { outline: 2px solid var(--wine); outline-offset: 7px; }
 .name-second { padding-left: 130px; }
 .ampersand { position: relative; top: 6px; display: block; margin: 0; font-size: 52px; line-height: 1; font-style: italic; font-weight: 400; color: #9c7c64; }
 .hero-date { display: flex; align-items: center; gap: 23px; }
-.hero-date p { font-size: 15px; letter-spacing: .025em; line-height: 1.8; margin: 0; }
+.hero-date p { font: 400 22px/1.5 var(--serif); letter-spacing: 0; margin: 0; }
 .date-dot { padding: 0 9px; color: var(--wine); }
 .date-rule { width: 44px; height: 1px; background: var(--line); }
-.scroll-note { margin-top: 43px; text-decoration: none; color: var(--muted); font-size: 10px; letter-spacing: .05em; }
-.scroll-note span { display: block; margin-top: 13px; font-size: 19px; color: var(--wine); transition: transform .2s ease; }
-.scroll-note:hover span { transform: translateY(4px); }
 .celebration { margin: 0 42px; padding: 68px 30px 78px; border-top: 1px solid var(--line); }
 .section-heading { text-align: center; }
 .section-heading > .eyebrow { color: var(--muted); }
@@ -179,11 +176,10 @@ h2 em { font-weight: 400; }
   .name-second { padding-left: 28px; }
   .ampersand { top: 4px; font-size: 39px; }
   .hero-date { gap: 9px; }
-  .hero-date p { max-width: 290px; font-size: 13px; }
+  .hero-date p { max-width: 290px; font-size: 19px; }
   .date-rule { width: 12px; flex-shrink: 0; }
   .date-dot { padding: 0 4px; }
   .time { white-space: nowrap; }
-  .scroll-note { margin-top: 35px; }
   .celebration { margin: 0 20px; padding: 46px 0 44px; }
   .section-heading h2 { margin-bottom: 29px; }
   .details { grid-template-columns: 1fr; }
@@ -211,7 +207,7 @@ h2 em { font-weight: 400; }
   .opening { display: none !important; }
   .intro-pending .page-frame { visibility: visible; }
   .page-frame { margin: 0; background: var(--paper); }
-  .masthead, .scroll-note, .detail-link, .footer { display: none; }
+  .masthead, .detail-link, .footer { display: none; }
   .invitation { min-height: auto; padding: 30px; }
   .celebration { padding: 30px 0; }
   .closing { background: transparent; color: var(--wine); padding: 25px; }
