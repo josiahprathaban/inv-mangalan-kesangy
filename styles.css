@@ -69,11 +69,9 @@ a:focus-visible { outline: 2px solid var(--wine); outline-offset: 7px; }
 .opening-name { display: block; font-size: var(--opening-name-size); line-height: 1.05; letter-spacing: -.055em; }
 /* Balance the visible glyphs: the names' descenders extend below their line boxes. */
 .opening-ampersand { position: relative; top: calc(var(--opening-name-size) * .16); display: block; margin: 12px 0; color: var(--paper); font-size: clamp(38px, 4vw, 58px); font-style: italic; line-height: 1; }
-.masthead { min-height: 88px; margin: 0 42px; border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-.wordmark { font: 500 36px/.8 var(--serif); letter-spacing: -3px; text-decoration: none; color: var(--wine); }
-.wordmark > span:first-child { font-size: 25px; font-style: italic; margin: 0 2px; }
-.wordmark-dot { letter-spacing: 0; }
-.masthead-note { color: var(--muted); font-size: 11px; letter-spacing: .035em; }
+.masthead { min-height: 88px; margin: 0 42px; display: flex; align-items: center; }
+.wordmark { font: 500 36px/.8 var(--serif); letter-spacing: -.11em; text-decoration: none; color: var(--wine); }
+.wordmark > span { font-size: 25px; font-style: italic; margin: 0 -.05em; }
 .text-link { display: inline-flex; gap: 22px; align-items: center; font-size: 11px; text-decoration: none; }
 .text-link > span[aria-hidden] { font-size: 17px; transition: transform .2s ease; }
 .text-link:hover { text-decoration: underline; }
@@ -92,9 +90,6 @@ a:focus-visible { outline: 2px solid var(--wine); outline-offset: 7px; }
 .hero-date p { font-size: 15px; letter-spacing: .025em; line-height: 1.8; margin: 0; }
 .date-dot { padding: 0 9px; color: var(--wine); }
 .date-rule { width: 44px; height: 1px; background: var(--line); }
-.side-note { position: absolute; top: 48%; font-size: 8px; letter-spacing: .22em; writing-mode: vertical-rl; color: var(--muted); }
-.side-note-left { left: 43px; transform: rotate(180deg); }
-.side-note-right { right: 43px; }
 .scroll-note { margin-top: 43px; text-decoration: none; color: var(--muted); font-size: 10px; letter-spacing: .05em; }
 .scroll-note span { display: block; margin-top: 13px; font-size: 19px; color: var(--wine); transition: transform .2s ease; }
 .scroll-note:hover span { transform: translateY(4px); }
@@ -146,13 +141,10 @@ h2 em { font-weight: 400; }
 }
 @media (max-width: 850px) {
   .masthead { margin: 0 26px; }
-  .masthead-note { display: none; }
   .invitation { min-height: 690px; padding: 52px 40px 36px; }
   .name { font-size: clamp(75px, 12.5vw, 110px); }
   .name-first { padding-right: 65px; }
   .name-second { padding-left: 65px; }
-  .side-note-left { left: 22px; }
-  .side-note-right { right: 22px; }
   .celebration { margin: 0 26px; padding: 56px 0; }
   .detail { padding: 8px 18px 2px; }
   .detail .detail-title { font-size: 23px; }
@@ -177,7 +169,6 @@ h2 em { font-weight: 400; }
   .page-frame { margin: 10px; }
   .masthead { min-height: 72px; margin: 0 20px; }
   .wordmark { font-size: 32px; }
-  .masthead .text-link { font-size: 10px; gap: 12px; }
   .invitation { min-height: 646px; padding: 43px 20px 32px; }
   .little-star { font-size: 25px; }
   .invitation-intro .eyebrow { font-size: 8px; letter-spacing: .16em; }
@@ -187,7 +178,6 @@ h2 em { font-weight: 400; }
   .name-first { padding-right: 22px; }
   .name-second { padding-left: 28px; }
   .ampersand { top: 4px; font-size: 39px; }
-  .side-note { display: none; }
   .hero-date { gap: 9px; }
   .hero-date p { max-width: 290px; font-size: 13px; }
   .date-rule { width: 12px; flex-shrink: 0; }
