@@ -76,7 +76,7 @@ a:focus-visible { outline: 2px solid var(--wine); outline-offset: 7px; }
 .name-second { padding-left: 130px; }
 .ampersand { position: relative; top: 6px; display: block; margin: 0; font-size: 52px; line-height: 1; font-style: italic; font-weight: 400; color: #9c7c64; }
 .hero-date { display: flex; align-items: center; gap: 23px; }
-.hero-date p { font-size: 11px; letter-spacing: .04em; line-height: 1.8; margin: 0; }
+.hero-date p { font-size: 15px; letter-spacing: .025em; line-height: 1.8; margin: 0; }
 .date-dot { padding: 0 9px; color: var(--wine); }
 .date-rule { width: 44px; height: 1px; background: var(--line); }
 .side-note { position: absolute; top: 48%; font-size: 8px; letter-spacing: .22em; writing-mode: vertical-rl; color: var(--muted); }
@@ -104,6 +104,15 @@ h2 em { font-weight: 400; }
 .closing .eyebrow { margin: 22px 0 0; color: #dfcbbc; }
 .closing h2 { margin: 21px 0; font-size: clamp(32px, 3.8vw, 49px); }
 .closing-signature { font: italic 21px var(--serif); color: #e6d7c9; margin-bottom: 0; }
+.closing-rsvp { max-width: 420px; margin: 30px auto 0; padding-top: 25px; border-top: 1px solid rgba(246, 242, 233, .22); }
+.rsvp-label { margin: 0 0 17px; font-size: 12px; letter-spacing: .04em; }
+.rsvp-whatsapp { display: inline-flex; align-items: center; justify-content: center; gap: 20px; min-height: 46px; padding: 12px 22px; background: var(--paper); color: var(--wine); font-size: 12px; text-decoration: none; }
+.rsvp-whatsapp:hover { background: #e6d7c9; }
+.rsvp-whatsapp > span[aria-hidden] { font-size: 18px; }
+.rsvp-call { display: block; width: fit-content; margin: 13px auto 0; padding: 8px 0; font-size: 13px; text-decoration: none; letter-spacing: .03em; }
+.rsvp-call span { margin-right: 6px; font-size: 10px; opacity: .8; }
+.rsvp-call:hover { text-decoration: underline; }
+.closing-rsvp a:focus-visible { outline-color: var(--paper); }
 .heart { display: inline-block; margin-left: 6px; }
 .footer { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 26px 42px; color: var(--muted); font-size: 9px; letter-spacing: .04em; }
 .footer-star { padding: 0 12px; color: var(--wine); }
@@ -163,8 +172,8 @@ h2 em { font-weight: 400; }
   .ampersand { top: 4px; font-size: 39px; }
   .side-note { display: none; }
   .hero-date { gap: 9px; }
-  .hero-date p { max-width: 250px; font-size: 10px; }
-  .date-rule { width: 18px; }
+  .hero-date p { max-width: 290px; font-size: 13px; }
+  .date-rule { width: 12px; flex-shrink: 0; }
   .date-dot { padding: 0 4px; }
   .time { white-space: nowrap; }
   .scroll-note { margin-top: 35px; }
@@ -181,6 +190,10 @@ h2 em { font-weight: 400; }
   .closing h2 { font-size: clamp(29px, 7vw, 39px); }
   .closing-signature { font-size: 18px; }
   .footer { flex-direction: column; gap: 9px; padding: 24px 12px; font-size: 8px; }
+}
+@media (max-width: 360px) {
+  .hero-date .date-dot { display: none; }
+  .hero-date .time { display: block; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
