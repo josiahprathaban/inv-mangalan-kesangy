@@ -3,6 +3,7 @@
   const page = document.querySelector('.page-frame');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const activeAnimations = new Set();
+  const openingArtAnimations = new Set();
   let observer;
   let openingTimer;
   let openingAnimation;
@@ -11,6 +12,8 @@
   const releaseCover = () => {
     clearTimeout(window.invitationOpeningFallback);
     clearTimeout(openingTimer);
+    openingArtAnimations.forEach((animation) => animation.cancel());
+    openingArtAnimations.clear();
     openingAnimation?.cancel();
     activeAnimations.delete(openingAnimation);
     openingSplits.forEach((split) => split.revert());
@@ -24,7 +27,26 @@
     return;
   }
 
-  const { animate, stagger, splitText, utils } = window.anime;
+  const { animate, stagger, splitText, utils, svg } = window.anime;
+  const animateOpeningArt = () => {
+    openingArtAnimations.add(animate(svg.createDrawable('.opening-art path'), {
+      draw: ['0 0', '0 1'],
+      duration: 1800,
+      delay: stagger(200),
+      loop: true,
+      alternate: true,
+      loopDelay: 350,
+      ease: 'inOut(2)',
+    }));
+    openingArtAnimations.add(animate('.opening-art svg', {
+      rotate: [-2, 2],
+      duration: 4000,
+      delay: stagger(400),
+      loop: true,
+      alternate: true,
+      ease: 'inOutSine',
+    }));
+  };
   const track = (animation) => {
     activeAnimations.add(animation);
     animation.then(() => activeAnimations.delete(animation));
@@ -112,6 +134,7 @@
           },
         }));
         root.classList.add('opening-font-ready');
+        animateOpeningArt();
       });
     } else {
       startInvitation();

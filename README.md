@@ -17,4 +17,6 @@ The design uses ivory paper and burgundy type. On a fresh visit, the bold ivory 
 
 The character reveal uses Anime.js `splitText`, `utils.shuffle`, and `stagger(75)` in `script.js`. The `setTimeout(finishOpening, 2000)` call controls the pause after the animation completes. Future artwork can be added without changing the content structure.
 
-The backgrounds combine a local watercolor paper asset with CSS color blending: warm ivory on the invitation, burgundy on the opening and closing. The texture stays still so it does not compete with the letter animation. Generation details and the prompt are in `assets/README.md`.
+The watercolor background is preserved but currently disabled. To enable it again, change `data-watercolor="off"` to `data-watercolor="on"` on the first `<html>` element in `index.html`. It restores the texture on the opening, invitation, and closing. Generation details and the prompt are in `assets/README.md`.
+
+The opening uses a flower and leafy sprig extracted from the supplied Vecteezy SVG, with continuously looping line drawing/erasing and a gentle sway. These loops run while the cover is visible and stop when the invitation opens or motion is reduced. The automatic opening timing is unchanged. Extracted artwork is saved as `assets/opening-flower.svg` and `assets/opening-leaves.svg` and embedded in `index.html` so Anime.js can animate the paths, including when opened directly from disk. The supplied collection is unchanged.
