@@ -24,3 +24,5 @@ The opening preserves two foreground flower sprigs at the top and bottom, curren
 Background plants are enlarged on desktop. Tablet screens show six spread-out stems, and mobile shows three larger stems at 0%, 50%, and 100%, preserving their aspect ratios and spacing. Hidden plants do not run sway animations.
 
 The curtain transition uses an Anime.js timeline in `finishOpening`. It keeps scrolling and invitation links locked until both pages settle, then removes temporary transforms. Escape skips directly to the invitation; reduced-motion visitors bypass the opening and transition.
+
+The upper opening background has two central hand-drawn hearts fixed at 15% opacity and eight neatly spaced smaller hearts with randomized sizes and 5-10% opacity. Anime.js draws the heart outlines and pulses each heart gently with independent timing; the flowers-finish-before-text sequence is preserved. All heart animations stop when the opening closes.

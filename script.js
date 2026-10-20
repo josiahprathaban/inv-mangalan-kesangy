@@ -35,7 +35,31 @@
   }
 
   const { animate, stagger, splitText, utils, svg, createTimeline } = window.anime;
+  const animateOpeningHearts = () => {
+    document.querySelectorAll('.opening-heart-small').forEach((heart) => {
+      const size = parseFloat(heart.style.getPropertyValue('--heart-size'));
+      heart.style.setProperty('--heart-size', `${utils.random(Math.round(size * .85), Math.round(size * 1.12))}px`);
+      heart.style.setProperty('--heart-opacity', utils.random(5, 10) / 100);
+    });
+    openingArtAnimations.add(animate(svg.createDrawable('.opening-heart path'), {
+      draw: ['0 0', '0 1'],
+      duration: () => utils.random(1400, 2000),
+      delay: stagger(90, { from: 'random' }),
+      ease: 'inOutSine',
+    }));
+    document.querySelectorAll('.opening-heart svg').forEach((heart) => {
+      openingArtAnimations.add(animate(heart, {
+        scale: [1, utils.random(106, 110) / 100],
+        duration: utils.random(2400, 4200),
+        delay: utils.random(0, 600),
+        loop: true,
+        alternate: true,
+        ease: 'inOutSine',
+      }));
+    });
+  };
   const animateOpeningArt = () => {
+    animateOpeningHearts();
     // Draw a white mask along the contours, revealing the original filled strokes.
     // The artwork stays single-lined and remains fully drawn after its entrance.
     const drawing = animate(svg.createDrawable('.opening-draw-path'), {
