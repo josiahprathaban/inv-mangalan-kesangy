@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Mangalan and Kesangy//Wedding Invitation//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:mangalan-kesangy-20261101@wedding.invitation
+DTSTAMP:20261020T000000Z
+DTSTART:20261101T043000Z
+SUMMARY:Mangalan & Kesangy's Wedding
+LOCATION:Thulasi Wedding Hall\, Kallady\, Batticaloa
+DESCRIPTION:Together with their families\, Mangalan and Kesangy request
+  the pleasure of your company at their wedding. Please join us for lunch
+  as we celebrate our special day.
+END:VEVENT
+END:VCALENDAR
