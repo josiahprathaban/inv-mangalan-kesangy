@@ -12,6 +12,7 @@
   let openingSplits = [];
   let started = false;
   const releaseCover = () => {
+    const wasOpening = root.classList.contains('intro-pending');
     clearTimeout(window.invitationOpeningFallback);
     clearTimeout(openingTimer);
     openingTransition?.cancel();
@@ -27,6 +28,7 @@
     openingSplits = [];
     root.classList.remove('intro-pending', 'invitation-ready', 'opening-font-ready', 'opening-font-fallback');
     page.inert = false;
+    if (wasOpening) window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   };
   // The invitation remains usable if the library is unavailable.
   if (!window.anime || reducedMotion.matches) {
@@ -143,6 +145,7 @@
     clearTimeout(window.invitationOpeningFallback);
     clearTimeout(openingTimer);
     // Both pages move together, like a curtain rising onto the invitation.
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     utils.set(page, { y: window.innerHeight });
     root.classList.add('invitation-ready');
     openingTransition = createTimeline({

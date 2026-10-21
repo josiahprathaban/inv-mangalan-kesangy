@@ -81,15 +81,20 @@ a:focus-visible { outline: 2px solid var(--wine); outline-offset: 7px; }
 .eyebrow { font-size: 10px; font-weight: 500; letter-spacing: .19em; text-transform: uppercase; }
 .invitation-intro .eyebrow { margin: 23px 0 12px; }
 .invitation-request { margin: 0; font: 400 19px/1.5 var(--serif); color: var(--muted); }
-.couple-names { position: relative; display: flex; flex-direction: column; align-items: center; gap: clamp(8px, 1vw, 14px); margin: 28px 0 33px; width: min(100%, 760px); font-family: var(--serif); font-weight: 400; color: var(--wine); }
+.couple-names { position: relative; display: flex; flex-direction: column; align-items: center; gap: clamp(8px, 1vw, 14px); margin: 28px 0 60px; width: min(100%, 760px); font-family: var(--serif); font-weight: 400; color: var(--wine); }
 .name { display: block; font-size: clamp(80px, 9.8vw, 140px); line-height: 1; letter-spacing: -.055em; }
 .name-first { padding-right: 120px; }
 .name-second { padding-left: 130px; }
 .ampersand { position: relative; top: 6px; display: block; margin: 0; font-size: 52px; line-height: 1; font-style: italic; font-weight: 400; color: #9c7c64; }
-.hero-date { display: flex; align-items: center; gap: 23px; }
+.hero-date { display: flex; flex-direction: column; align-items: center; gap: 3px; width: 100%; text-align: center; color: var(--muted); }
 .hero-date p { font: 400 22px/1.5 var(--serif); letter-spacing: 0; margin: 0; }
-.date-dot { padding: 0 9px; color: var(--wine); }
-.date-rule { width: 44px; height: 1px; background: var(--line); }
+.hero-date .hero-date-day { font-size: 30px; }
+.digit-one { font-family: Georgia, "Times New Roman", serif; font-size: .78em; font-style: normal; font-weight: 400; }
+.hero-date .hero-date-venue strong { font-weight: 500; }
+.hero-date .hero-date-location { font-size: 18px; color: var(--muted); }
+.scroll-arrow { display: grid; place-items: center; width: 44px; height: 44px; margin-top: 42px; color: var(--wine); text-decoration: none; }
+.scroll-arrow svg { transition: transform .2s ease; }
+.scroll-arrow:hover svg { transform: translateY(4px); }
 .celebration { margin: 0 42px; padding: 68px 30px 78px; border-top: 1px solid var(--line); }
 .section-heading { text-align: center; }
 .section-heading > .eyebrow { color: var(--muted); }
@@ -170,16 +175,14 @@ h2 em { font-weight: 400; }
   .little-star { font-size: 25px; }
   .invitation-intro .eyebrow { font-size: 8px; letter-spacing: .16em; }
   .invitation-request { font-size: 18px; }
-  .couple-names { margin: 36px 0 34px; }
+  .couple-names { margin: 36px 0 60px; }
   .name { font-size: clamp(58px, 16vw, 90px); }
   .name-first { padding-right: 22px; }
   .name-second { padding-left: 28px; }
   .ampersand { top: 4px; font-size: 39px; }
-  .hero-date { gap: 9px; }
-  .hero-date p { max-width: 290px; font-size: 19px; }
-  .date-rule { width: 12px; flex-shrink: 0; }
-  .date-dot { padding: 0 4px; }
-  .time { white-space: nowrap; }
+  .hero-date p { font-size: 19px; }
+  .hero-date .hero-date-day { font-size: 26px; }
+  .hero-date .hero-date-location { font-size: 16px; }
   .celebration { margin: 0 20px; padding: 46px 0 44px; }
   .section-heading h2 { margin-bottom: 29px; }
   .details { grid-template-columns: 1fr; }
@@ -194,10 +197,6 @@ h2 em { font-weight: 400; }
   .closing-signature { font-size: 18px; }
   .footer { flex-direction: column; gap: 9px; padding: 24px 12px; font-size: 8px; }
 }
-@media (max-width: 360px) {
-  .hero-date .date-dot { display: none; }
-  .hero-date .time { display: block; }
-}
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; }
@@ -207,7 +206,7 @@ h2 em { font-weight: 400; }
   .opening { display: none !important; }
   .intro-pending .page-frame { visibility: visible; }
   .page-frame { margin: 0; background: var(--paper); }
-  .masthead, .detail-link, .footer { display: none; }
+  .masthead, .scroll-arrow, .detail-link, .footer { display: none; }
   .invitation { min-height: auto; padding: 30px; }
   .celebration { padding: 30px 0; }
   .closing { background: transparent; color: var(--wine); padding: 25px; }

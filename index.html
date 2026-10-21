@@ -14,8 +14,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <script>
+      // A fresh load always starts at the opening, rather than a saved fragment.
+      if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+      if (location.hash) history.replaceState(history.state, '', location.pathname + location.search);
+      const resetInvitationScroll = () => window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      resetInvitationScroll();
+      document.addEventListener('DOMContentLoaded', resetInvitationScroll, { once: true });
+      window.addEventListener('pageshow', resetInvitationScroll, { once: true });
       // Prepare before the first paint; release the cover if scripts fail to load.
-      if (!location.hash && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
         document.documentElement.classList.add('intro-pending');
         window.invitationOpeningFallback = setTimeout(() => {
           document.documentElement.classList.remove('intro-pending', 'invitation-ready');
@@ -113,10 +120,12 @@
           </h1>
 
           <div class="hero-date" data-reveal>
-            <span class="date-rule" aria-hidden="true"></span>
-            <p>Sunday, 1 November 2026 <span class="date-dot" aria-hidden="true">·</span> <span class="time">10:00 AM</span></p>
-            <span class="date-rule" aria-hidden="true"></span>
+            <p class="hero-date-day"><time datetime="2026-11-01">Sunday, <span class="digit-one">1</span> November 2026</time></p>
+            <p class="hero-date-time"><time datetime="2026-11-01T10:00:00+05:30">at <span class="digit-one">1</span>0 in the morning</time></p>
+            <p class="hero-date-venue">Thulasi Wedding Hall</p>
+            <p class="hero-date-location">Kallady, Batticaloa</p>
           </div>
+          <a class="scroll-arrow" href="#celebration" aria-label="View the celebration details" data-reveal><svg viewBox="0 0 24 28" width="24" height="28" fill="none" stroke="currentColor" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v21m-7-7 7 7 7-7"/></svg></a>
         </section>
 
         <section class="celebration" id="celebration" aria-labelledby="celebration-heading">
@@ -129,7 +138,7 @@
             <article class="detail" data-reveal>
               <span class="detail-number" aria-hidden="true">01 /</span>
               <h3>The day</h3>
-              <p class="detail-title">Sunday, 1 November</p>
+              <p class="detail-title">Sunday, <span class="digit-one">1</span> November</p>
               <p>2026 · 10:00 AM</p>
               <a class="text-link detail-link" href="mangalan-kesangy.ics" download>Add to calendar <span aria-hidden="true">↗</span></a>
             </article>
