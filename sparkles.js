@@ -19,7 +19,7 @@
     const star = document.createElement('span');
     star.className = 'name-sparkle';
     star.dataset.name = String(index % names.length);
-    star.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 1C13 8 16 11 23 12C16 13 13 16 12 23C11 16 8 13 1 12C8 11 11 8 12 1Z"/><circle cx="12" cy="12" r="1.2" fill="#fff9ea"/></svg>';
+    star.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 1C13 8 16 11 23 12C16 13 13 16 12 23C11 16 8 13 1 12C8 11 11 8 12 1Z"/></svg>';
     layer.append(star);
     return star;
   });
