@@ -2,8 +2,9 @@
   const heading = document.querySelector('#couple-names');
   if (!heading || !window.anime) return;
 
-  const { animate, utils } = window.anime;
+  const { animate, waapi, utils } = window.anime;
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  const nativeAnimate = waapi?.animate || animate;
   const names = [...heading.querySelectorAll('.name')];
   const canvas = document.createElement('canvas');
   const context = canvas.getContext('2d');
@@ -71,10 +72,9 @@
       schedule(star, 500);
       return;
     }
-    animations.set(star, animate(star, {
+    animations.set(star, nativeAnimate(star, {
       opacity: [0, .8, 0],
-      scale: [.35, 1, .35],
-      rotate: [utils.random(-18, 0), utils.random(5, 22)],
+      transform: [`scale(.35) rotate(${utils.random(-18, 0)}deg)`, 'scale(1) rotate(0deg)', `scale(.35) rotate(${utils.random(5, 22)}deg)`],
       duration: utils.random(1600, 2400),
       ease: 'inOutSine',
       onComplete: () => {

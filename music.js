@@ -10,6 +10,7 @@
 
   audio.volume = .05;
   audio.loop = true;
+  audio.autoplay = true;
   button.hidden = false;
 
   const updateControl = () => {
@@ -96,4 +97,10 @@
 
   updateControl();
   playMusic();
+  audio.addEventListener('canplay', () => {
+    if (audio.paused && !userPaused) playMusic();
+  }, { once: true });
+  window.addEventListener('pageshow', () => {
+    if (audio.paused && !userPaused) playMusic();
+  });
 })();

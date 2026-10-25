@@ -36,7 +36,18 @@
     return;
   }
 
-  const { animate, stagger, splitText, utils, svg, createTimeline } = window.anime;
+  const { animate, stagger, splitText, utils, svg, createTimeline, waapi } = window.anime;
+  // Native browser animations keep transform work out of the JS frame loop.
+  const nativeAnimate = waapi?.animate || animate;
+  const sway = (element, from, to, duration, delay = 0) => {
+    openingArtAnimations.add(nativeAnimate(element, {
+      transform: [`rotate(${from}deg)`, `rotate(${to}deg)`],
+      duration, delay, loop: true, alternate: true, ease: 'inOutSine',
+    }));
+  };
+  document.addEventListener('visibilitychange', () => {
+    openingArtAnimations.forEach((animation) => document.hidden ? animation.pause() : animation.resume());
+  });
   const animateOpeningHearts = () => {
     document.querySelectorAll('.opening-heart-small').forEach((heart) => {
       const size = parseFloat(heart.style.getPropertyValue('--heart-size'));
@@ -50,8 +61,8 @@
       ease: 'inOutSine',
     }));
     document.querySelectorAll('.opening-heart svg').forEach((heart) => {
-      openingArtAnimations.add(animate(heart, {
-        scale: [1, utils.random(106, 110) / 100],
+      openingArtAnimations.add(nativeAnimate(heart, {
+        transform: ['scale(1)', `scale(${utils.random(106, 110) / 100})`],
         duration: utils.random(2400, 4200),
         delay: utils.random(0, 600),
         loop: true,
@@ -64,35 +75,32 @@
     animateOpeningHearts();
     // Draw a white mask along the contours, revealing the original filled strokes.
     // The artwork stays single-lined and remains fully drawn after its entrance.
-    const drawing = animate(svg.createDrawable('.opening-draw-path'), {
+    // Animate only motifs used by visible plants at this viewport size.
+    const symbols = new Set([...document.querySelectorAll('.opening-meadow-plant, .opening-stem')]
+      .filter((plant) => getComputedStyle(plant).display !== 'none')
+      .map((plant) => document.querySelector(plant.querySelector('use').getAttribute('href'))));
+    const maskedPaths = [...symbols].flatMap((symbol) => [...symbol.querySelectorAll('[mask]')]);
+    const drawPaths = maskedPaths.map((path) => {
+      const mask = document.querySelector(path.getAttribute('mask').slice(4, -1));
+      return mask.querySelector('.opening-draw-path');
+    });
+    const drawing = animate(svg.createDrawable(drawPaths), {
       draw: ['0 0', '0 1'],
       duration: () => utils.random(3200, 4000),
       delay: stagger(120, { from: 'random' }),
       ease: 'inOutSine',
+      // Once ink is complete, sway plain vectors instead of rasterized masks.
+      onComplete: () => maskedPaths.forEach((path) => path.removeAttribute('mask')),
     });
     openingArtAnimations.add(drawing);
     if (root.dataset.foregroundFlowers !== 'off') {
-      openingArtAnimations.add(animate('.opening-stem svg', {
-        rotate: [-2, 2],
-        duration: 4000,
-        delay: stagger(120),
-        loop: true,
-        alternate: true,
-        ease: 'inOutSine',
-      }));
+      document.querySelectorAll('.opening-stem svg').forEach((stem) => sway(stem, -2, 2, 4000));
     }
     document.querySelectorAll('.opening-meadow-plant svg').forEach((plant) => {
       if (getComputedStyle(plant.parentElement).display === 'none') return;
       const direction = Math.random() < .5 ? -1 : 1;
       const angle = utils.random(18, 42) / 10;
-      openingArtAnimations.add(animate(plant, {
-        rotate: [direction * angle, -direction * angle],
-        duration: utils.random(3400, 8200),
-        delay: utils.random(0, 700),
-        loop: true,
-        alternate: true,
-        ease: 'inOutSine',
-      }));
+      sway(plant, direction * angle, -direction * angle, utils.random(3400, 8200), utils.random(0, 700));
     });
     return drawing;
   };
@@ -192,10 +200,9 @@
         root.classList.add('opening-font-ready');
         drawing.then(() => {
           if (!root.classList.contains('intro-pending') || reducedMotion.matches) return;
-          openingAnimation = track(animate(characters, {
+          openingAnimation = track(nativeAnimate(characters, {
             opacity: [0, 1],
-            y: [8, 0],
-            scale: [.78, 1.035, 1],
+            transform: ['translateY(8px) scale(.78)', 'translateY(0px) scale(1.035)', 'translateY(0px) scale(1)'],
             filter: ['blur(8px)', 'blur(0px)'],
             textShadow: ['0 0 18px rgba(246, 242, 233, .65)', '0 0 0px rgba(246, 242, 233, 0)'],
             duration: 1200,
