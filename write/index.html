@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f6f2e9">
+    <meta name="robots" content="noindex">
+    <title>Write an invitation · Mangalan & Kesangy</title>
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="write.css">
+    <script src="write.js" defer></script>
+  </head>
+  <body>
+    <div class="writer-frame">
+      <header class="writer-header">
+        <a class="wordmark" href="../" aria-label="View Mangalan and Kesangy's invitation">M<span>&</span>K</a>
+        <a class="writer-back" href="../">View invitation <span aria-hidden="true">↗</span></a>
+      </header>
+      <main class="writer-main">
+        <div class="writer-title">
+          <p class="eyebrow">A little more personal</p>
+          <h1>An invitation,<br><em>just for them.</em></h1>
+          <p>Add your guests’ names and a few words from the heart. Create their invitation link, then send it with your message.</p>
+        </div>
+        <div class="writer-grid">
+          <form id="write-form" class="writer-form">
+            <label for="guest">Who are you inviting?</label>
+            <input id="guest" name="guest" type="text" placeholder="John and Mary" maxlength="160" autocomplete="off" required aria-describedby="guest-help">
+            <p class="field-help" id="guest-help">Write the names as you’d like them to appear after “Dear”.</p>
+
+            <label for="personal-note">A note on their invitation <span class="optional">optional</span></label>
+            <textarea id="personal-note" name="note" rows="3" maxlength="400" placeholder="It would mean so much to celebrate with you." aria-describedby="note-help"></textarea>
+            <p class="field-help" id="note-help">Appears beneath their greeting. Names and this note will be included in the link.</p>
+
+            <div class="label-row">
+              <label for="share-message">Your sharing message</label>
+              <button class="text-button" id="reset-message" type="button">Use default</button>
+            </div>
+            <textarea id="share-message" rows="9" maxlength="3000" aria-describedby="message-help"></textarea>
+            <p class="field-help" id="message-help">Edit this message for WhatsApp, social media, or email. We’ll add the invitation link for you.</p>
+            <button class="writer-button primary" type="submit">Create invitation link <span aria-hidden="true">↗</span></button>
+          </form>
+          <aside class="writer-preview" aria-labelledby="preview-heading">
+            <p class="eyebrow" id="preview-heading">Their invitation</p>
+            <p class="preview-greeting" id="preview-greeting">Dear your lovely guests,</p>
+            <p class="preview-note" id="preview-note" hidden></p>
+            <p class="preview-intro">Together with their families</p>
+            <p class="preview-names">Mangalan <span>&</span> Kesangy</p>
+            <div class="preview-date">Sunday, 1 November 2026<br>at 10 in the morning<br>Thulasi Wedding Hall<br><span>Kallady, Batticaloa</span></div>
+          </aside>
+        </div>
+        <section class="writer-result" id="writer-result" aria-labelledby="result-title" hidden>
+          <p class="eyebrow">Ready to send</p>
+          <h2 id="result-title">A special invitation awaits.</h2>
+          <label for="invitation-link">Your personalised link</label>
+          <div class="link-row">
+            <input id="invitation-link" type="url" readonly>
+            <button class="writer-button" id="copy-link" type="button">Copy link</button>
+          </div>
+          <a id="open-invitation" class="preview-link" target="_blank" rel="noopener noreferrer">Preview invitation <span aria-hidden="true">↗</span></a>
+          <label for="ready-message">Message with invitation link</label>
+          <textarea id="ready-message" rows="8" readonly></textarea>
+          <div class="share-actions">
+            <button class="writer-button primary" id="native-share" type="button" hidden>Share…</button>
+            <a class="writer-button" id="share-whatsapp" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            <a class="writer-button" id="share-telegram" target="_blank" rel="noopener noreferrer">Telegram</a>
+            <a class="writer-button" id="share-email">Email</a>
+            <button class="writer-button" id="copy-message" type="button">Copy message</button>
+          </div>
+        </section>
+        <p class="writer-status" id="writer-status" role="status" aria-live="polite"></p>
+        <noscript><p>Please enable JavaScript to create a personalised invitation link.</p></noscript>
+      </main>
+      <footer class="footer"><p>Invitations made with love by <a href="https://www.invitaions.online" target="_blank" rel="noopener noreferrer">www.invitaions.online</a></p></footer>
+    </div>
+  </body>
+</html>

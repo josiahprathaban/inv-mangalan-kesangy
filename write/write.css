@@ -1,0 +1,54 @@
+body::before { display: none; }
+[hidden] { display: none !important; }
+.writer-frame { max-width: 1180px; margin: 20px auto; border: 1px solid var(--line); }
+.writer-header { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 35px 44px; }
+.writer-back { font-size: 12px; text-decoration: none; }
+.writer-back span { margin-left: 12px; }
+.writer-main { padding: 30px 64px 0; }
+.writer-title { max-width: 520px; margin-bottom: 44px; }
+.writer-title .eyebrow { color: var(--wine); }
+.writer-title h1 { margin: 18px 0; font: 400 clamp(44px, 6vw, 68px)/.98 var(--serif); letter-spacing: -.035em; color: var(--wine); }
+.writer-title h1 em { font-weight: 400; }
+.writer-title > p:last-child { color: var(--muted); font-size: 13px; line-height: 1.9; }
+.writer-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 64px; align-items: start; }
+.writer-form, .writer-result { min-width: 0; }
+label { display: block; margin: 0 0 10px; font-size: 12px; font-weight: 500; }
+input, textarea { width: 100%; min-width: 0; border: 1px solid var(--line); border-radius: 3px; background: rgba(255,255,255,.35); color: var(--ink); padding: 13px 14px; font: 400 16px/1.6 var(--sans); }
+input::placeholder, textarea::placeholder { color: #94857c; }
+textarea { resize: vertical; }
+input:focus-visible, textarea:focus-visible { outline: 2px solid var(--wine); outline-offset: 3px; }
+.field-help { margin: 9px 0 27px; color: var(--muted); font-size: 11px; line-height: 1.7; }
+.optional { margin-left: 5px; color: var(--muted); font-weight: 400; }
+.label-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.text-button { border: 0; padding: 0; color: var(--wine); background: transparent; font: 400 11px var(--sans); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.writer-button { display: inline-flex; justify-content: center; align-items: center; gap: 18px; min-height: 46px; padding: 11px 19px; border: 1px solid var(--line); border-radius: 3px; background: transparent; color: var(--wine); font: 500 12px/1.5 var(--sans); text-decoration: none; cursor: pointer; }
+.writer-button.primary { background: var(--wine); border-color: var(--wine); color: var(--paper); }
+.writer-button:hover { border-color: var(--wine); }
+.writer-button:focus-visible, .text-button:focus-visible { outline: 2px solid var(--wine); outline-offset: 4px; }
+.writer-preview { padding: 36px 24px; border: 1px solid var(--line); text-align: center; background: #f1eadf; overflow-wrap: anywhere; }
+.writer-preview .eyebrow { font-size: 9px; color: var(--muted); }
+.preview-greeting { margin: 30px 0 14px; font: 400 28px/1.2 var(--serif); color: var(--wine); }
+.preview-note { margin: 0 0 24px; font: italic 400 20px/1.4 var(--serif); color: var(--muted); white-space: pre-line; }
+.preview-intro { margin-top: 28px; font-size: 8px; letter-spacing: .14em; text-transform: uppercase; }
+.preview-names { margin: 20px 0 28px; font: 400 44px/1.05 var(--serif); letter-spacing: -.035em; color: var(--wine); }
+.preview-names span { display: block; margin: 12px 0; font-size: 30px; font-style: italic; color: #9c7c64; }
+.preview-date { font: 400 19px/1.6 var(--serif); color: var(--muted); }
+.preview-date span { font-size: 16px; }
+.writer-result { margin-top: 48px; padding-top: 35px; border-top: 1px solid var(--line); }
+.writer-result h2 { margin: 12px 0 30px; color: var(--wine); font-size: 38px; }
+.link-row { display: flex; gap: 10px; }
+.link-row input { flex: 1; }
+.preview-link { display: inline-block; margin: 15px 0 30px; color: var(--wine); font-size: 12px; }
+.share-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+.writer-status { min-height: 24px; margin: 24px 0 0; color: var(--wine); font-size: 12px; line-height: 1.7; }
+@media (max-width: 760px) {
+  .writer-frame { margin: 10px; }
+  .writer-header { padding: 27px 22px; }
+  .writer-main { padding: 25px 22px 0; }
+  .writer-title { margin-bottom: 32px; }
+  .writer-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .writer-preview { padding: 25px 18px; }
+  .preview-names { font-size: 42px; }
+  .link-row { flex-direction: column; }
+  .share-actions > * { flex: 1 1 auto; }
+}
